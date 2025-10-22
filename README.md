@@ -47,19 +47,32 @@ Follow these instructions to get a copy of the project up and running on your lo
     cd woitasen-challenge
     ```
 
-2.  **Install dependencies:**
-    This monorepo uses pnpm for package management. Install all dependencies from the root directory.
+2.  **Build the shared types package:**
+    The frontend and backend depend on the compiled output of the shared types workspace. Make sure it is built before installing the app dependencies.
+    ```sh
+    pnpm --filter @repo/types build
+    ```
+
+3.  **Rename the environment files:**
+    Rename each `.env.example` file to `.env` so the applications load their environment variables correctly.
+    ```sh
+    mv apps/backend/.env.example apps/backend/.env
+    mv apps/frontend/.env.example apps/frontend/.env
+    ```
+
+4.  **Install dependencies:**
+    This monorepo uses pnpm for package management. Install all dependencies from the root directory after the types have been built.
     ```sh
     pnpm install
     ```
 
-3.  **Start the database:**
+5.  **Start the database:**
     The project uses a PostgreSQL database running in a Docker container. Use `docker-compose` to start it.
     ```sh
     docker compose up -d
     ```
 
-4.  **Run the development servers:**
+6.  **Run the development servers:**
     This command will start both the backend and frontend applications in development mode.
     ```sh
     pnpm dev
@@ -127,21 +140,36 @@ Sigue estas instrucciones para obtener una copia del proyecto y ejecutarlo local
    cd woitasen-challenge
    ```
 
-2. **Instalar dependencias:**
-   Este monorepo usa **pnpm** como gestor de paquetes. Instala todas las dependencias desde el directorio raíz.
+2. **Compilar el paquete de tipos compartidos:**
+   El frontend y el backend dependen de la salida compilada del workspace de tipos. Asegúrate de compilarlo antes de instalar las dependencias de las aplicaciones.
+
+   ```sh
+   pnpm --filter @repo/types build
+   ```
+
+3. **Renombrar los archivos de entorno:**
+   Cambia el nombre de cada archivo `.env.example` a `.env` para que las aplicaciones carguen correctamente sus variables de entorno.
+
+   ```sh
+   mv apps/backend/.env.example apps/backend/.env
+   mv apps/frontend/.env.example apps/frontend/.env
+   ```
+
+4. **Instalar dependencias:**
+   Este monorepo usa **pnpm** como gestor de paquetes. Instala todas las dependencias desde el directorio raíz una vez compilados los tipos.
 
    ```sh
    pnpm install
    ```
 
-3. **Iniciar la base de datos:**
+5. **Iniciar la base de datos:**
    El proyecto usa una base de datos **PostgreSQL** ejecutada en un contenedor **Docker**. Usa `docker-compose` para iniciarla.
 
    ```sh
    docker compose up -d
    ```
 
-4. **Ejecutar los servidores de desarrollo:**
+6. **Ejecutar los servidores de desarrollo:**
    Este comando iniciará tanto el **backend** como el **frontend** en modo desarrollo.
 
    ```sh

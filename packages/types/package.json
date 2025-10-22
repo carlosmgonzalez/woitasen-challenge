@@ -20,8 +20,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.18.3",
   "dependencies": {
-    "zod": "^4.1.12",
-    "@repo/frontend": "workspace:*"
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "typescript": "catalog:"

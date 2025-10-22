@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "pnpm --filter=\"@repo/backend\" build && pnpm --filter=\"@repo/frontend\" build",
-    "dev": "pnpm --parallel --filter=\"@repo/backend\" --filter=\"@repo/frontend\" dev",
+    "build": "pnpm --recursive build",
+    "dev": "pnpm --recursive --parallel dev",
     "start": "pnpm --parallel --filter=\"@repo/backend\" start & pnpm --filter=\"@repo/frontend\" preview"
   },
   "keywords": [],

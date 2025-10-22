@@ -205,6 +205,9 @@ importers:
 
   packages/types:
     dependencies:
+      '@repo/frontend':
+        specifier: workspace:*
+        version: link:../../apps/frontend
       zod:
         specifier: ^4.1.12
         version: 4.1.12
